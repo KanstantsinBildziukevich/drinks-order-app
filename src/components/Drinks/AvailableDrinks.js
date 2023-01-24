@@ -1,5 +1,6 @@
+import Card from '../UI/Card';
 import classes from './AvailableDrinks.module.css';
-import { assertClassExpression } from '@babel/types';
+import DrinkItem from './DrinkItem/DrinkItem';
 
 const DUMMY_DRINKS = [
   {
@@ -29,13 +30,22 @@ const DUMMY_DRINKS = [
 ];
 
 const AvailableDrinks = () => {
-  const drinksList = DUMMY_DRINKS.map(drink => <li>{drink.name}</li>);
+  const drinksList = DUMMY_DRINKS.map(drink => (
+    <DrinkItem 
+      key={drink.id} 
+      name={drink.name} 
+      description={drink.description} 
+      price={drink.price}
+    />
+  ));
 
   return (
     <section className={classes.drinks}>
-      <ul>
-        {drinksList}
-      </ul>
+      <Card>
+        <ul>
+          {drinksList}
+        </ul>
+      </Card>
     </section>
   );
 };
